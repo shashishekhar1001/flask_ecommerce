@@ -1,0 +1,40 @@
+{% extends "auth/auth_base.html" %}
+{% block auth_title %}Signup{% endblock %}
+{% block error_flash %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-danger alert-dismissible show fade">
+                {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">Login page</a>.
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endblock %}
+{% block content %}
+<form method="POST" action="{{ url_for('auth.signup') }}">
+    <div class="form-group position-relative has-icon-left mb-4">
+        <input type="email" name="email" class="form-control form-control-xl" placeholder="Email">
+        <div class="form-control-icon">
+            <i class="bi bi bi-envelope"></i>
+        </div>
+    </div>
+    <div class="form-group position-relative has-icon-left mb-4">
+        <input type="text" name="name" class="form-control form-control-xl" placeholder="Username">
+        <div class="form-control-icon">
+            <i class="bi bi bi-person"></i>
+        </div>
+    </div>
+    <div class="form-group position-relative has-icon-left mb-4">
+        <input type="password" name="password" class="form-control form-control-xl" placeholder="Password">
+        <div class="form-control-icon">
+            <i class="bi bi-shield-lock"></i>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Signup</button>
+</form>
+<div class="text-center mt-5 text-lg fs-4">
+    <p class="text-gray-600">Already have an account? <a href="{{ url_for('auth.login') }}"
+            class="font-bold">Log In
+            </a>.
+    </p>
+</div>
+{% endblock %}

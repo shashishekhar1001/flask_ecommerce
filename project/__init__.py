@@ -33,6 +33,14 @@ def create_app():
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    #blueprint for admin part of app
+    from .admin import admin as admin_blueprint
+    app.register_blueprint(admin_blueprint)
+
+    #blueprint for api part of app
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint)
+
     return app
 
 # To Run use:-
